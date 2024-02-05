@@ -1,0 +1,26 @@
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 3rem;
+}
+div > section > img {
+    width: 100%;
+    max-height: 650px;
+}
+.example-card {
+    max-width: 400px;
+    gap: 1rem;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}
+
+.second-container {
+    text-align: center;
+}

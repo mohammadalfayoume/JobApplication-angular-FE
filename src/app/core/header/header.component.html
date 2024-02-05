@@ -1,0 +1,38 @@
+<mat-toolbar class="header-container">
+  <div class="first-div">
+
+    <a href="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </a>
+    <span>JOB</span>
+    <!-- <span class="example-spacer"></span> -->
+  
+    <!-- Add Login and Register links -->
+      <span style="padding-left:2rem" *ngIf="!isAuthenticated">
+        <a href="/account/login" mat-button>Login</a>
+        <a href="/account/register" mat-button>Register</a>
+      </span>
+  </div>
+  <div class="dropdown second-container" *ngIf="isAuthenticated">
+    <button class="btn btn-default dropdown-toggle btn-custom" type="button" id="menu1" data-toggle="dropdown">
+     <img [src]="imgSrc || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'" class="image">
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngIf="role == 'Company'">
+        <a href="/company"><i class="fa-solid fa-user"></i> Profile</a>
+      </li>
+      <li *ngIf="role == 'JobSeeker'">
+        <a href="/jobseeker"><i class="fa-solid fa-user"></i> Profile</a>
+      </li>
+      <li class="divider"></li>
+      <li ><a (click)="onClickSignOut()" style="color: red; cursor: pointer;"><i class="fa fa-sign-out"></i> Sign-out
+      </a></li>
+    </ul>
+  </div>
+    <!-- <div class="second-div" *ngIf="isAuthenticated"> -->
+      <!-- <button mat-button (click)="onClickSignOut()">Logout</button>
+      <img src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg" class="rounded-circle" style="width: 50px;"
+      alt="Avatar" /> -->
+    <!-- </div> -->
+  <!-- <span class="example-spacer"></span> -->
+</mat-toolbar>

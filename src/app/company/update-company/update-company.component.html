@@ -1,0 +1,46 @@
+<div class="page-container">
+    <h1>Update Company Profile</h1>
+    <form [formGroup]="companyProfileForm" (ngSubmit)="$event.preventDefault(); submitForm()">
+      <mat-form-field>
+        <mat-label for="companyName">Company Name</mat-label>
+        <input matInput name="companyName" id="companyName" formControlName="companyName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="about">About Us</mat-label>
+        <input matInput name="about" id="about" formControlName="aboutUs">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="country">Country</mat-label>
+        <mat-select formControlName="countryId" (selectionChange)="onCountrySelectionChange($event)">
+          <mat-option *ngFor="let country of countries" [value]="country.id">
+            {{ country.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field *ngIf="selectedCountry">
+        <mat-label for="city">City</mat-label>
+        <mat-select formControlName="cityId">
+          <mat-option *ngFor="let city of cities" [value]="city.id">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+        <!-- <input matInput name="city" id="city" formControlName="cityId"> -->
+      </mat-form-field>
+      <div class="logo">
+        <div class="input-div">
+          <label for="formFile">Profile Picture</label>
+          <input id="file" name="file" type="file" accept="image/*" required (change)="onFileChange($event)">
+          
+        </div>
+        <div class="img-div">
+          <img [src]="imgSrc || 'http://placehold.it/150'" alt="image">
+        </div>
+        <button type="button" style="display: flex;align-self: flex-start;" class="btn-close" aria-label="Close" (click)="removeImage()"></button>
+      </div>
+      
+      <button mat-raised-button color="primary" type="submit" [disabled]="companyProfileForm.invalid || buttonDsiabled">Save</button>
+      
+    </form>
+    
+  </div>
