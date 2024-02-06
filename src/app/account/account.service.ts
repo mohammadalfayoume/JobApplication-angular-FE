@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-import { User } from '../lib/interfaces/User';
+import { UserDto } from '../lib/interface/userDto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthService {
   private isAuthenticatedSource = new BehaviorSubject<boolean>(this.checkToken());
   isAuthenticated$ = this.isAuthenticatedSource.asObservable();
 
-  private userSource = new BehaviorSubject<User | null>(null);
+  private userSource = new BehaviorSubject<UserDto | null>(null);
   userData$ = this.userSource.asObservable();
 
   currentRole : any = localStorage.getItem("roles");
@@ -36,21 +36,23 @@ export class AuthService {
   }
   registerUser(userForm: any) {
     return this.http.post<any>(`${this.apiUrl}/account/register`, userForm).pipe(
-      map(user => {
-        this.storeTokenAndUserData(user.data.token, user.data.id, user.data.roles);
+      map(response => {
+        const user = response.data;
+        this.storeTokenAndUserData(user.token, user.id, user.roles);
         this.updateAuthenticationStatus();
-        this.userSource.next(user.data);
+        this.userSource.next(user);
       })
     )
   }
 
   loginUser(userForm: any) {
-    debugger;
     return this.http.post<any>(`${this.apiUrl}/account/login`, userForm).pipe(
-      map(user => {
-        this.storeTokenAndUserData(user.data.token, user.data.id, user.data.roles);
+      map(response => {
+        const user = response.data;
+        console.log(user);
+        this.storeTokenAndUserData(user.token, user.id, user.roles);
         this.updateAuthenticationStatus();
-        this.userSource.next(user.data);
+        this.userSource.next(user);
       })
     );
   }

@@ -4,24 +4,24 @@
 <ng-template #showDev>
     <h1 class="header">Company Profile</h1>
     <img class="profilePicture" [src]="imgSrc || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'" alt="Preview Image">
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Company Name</th>
-            <th scope="col">About Us</th>
-            <th scope="col">Country</th>
-            <th scope="col">City</th>
-            <th scope="col">Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{data.companyName}}</td>
-            <td>{{data.aboutUs}}</td>
-            <td>{{data.countryName}}</td>
-            <td>{{data.cityName}}</td>
-            <td><a href="/company/update-company"><i class="fas fa-edit"></i></a></td>
-          </tr>
-        </tbody>
-      </table>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Company Name</th>
+              <th scope="col">About Us</th>
+              <th scope="col">Country</th>
+              <th scope="col">City</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{data.companyName || 'empty'}}</td>
+              <td>{{data.aboutUs || 'empty'}}</td>
+              <td>{{data.countryName || 'empty'}}</td>
+              <td>{{data.cityName || 'empty'}}</td>
+              <td><a href="/company/update-company"><i class="fas fa-edit"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
 </ng-template>

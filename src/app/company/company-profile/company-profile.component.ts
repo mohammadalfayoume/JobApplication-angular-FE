@@ -19,7 +19,7 @@ export class CompanyProfileComponent implements OnInit {
     this.companyService.getCompanyData().subscribe(
       response => {
         this.data = response.data;
-        this.fileService.getImageUrl(response.data.profilePictureFile.id).subscribe(
+        this.fileService.getImageUrl(response.data?.profilePictureFile?.id).subscribe(
           (imageUrl: string) => {
             this.imgSrc = imageUrl;
             this.isComplete = true;
