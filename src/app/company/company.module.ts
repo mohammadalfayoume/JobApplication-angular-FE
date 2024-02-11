@@ -14,14 +14,21 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { CompanyRoutingModule } from './company-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { PostJobComponent } from './post-job/post-job.component';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
 @NgModule({
   declarations: [
     UpdateCompanyProfileComponent,
-    CompanyProfileComponent
+    CompanyProfileComponent,
+    PostJobComponent
   ],
+
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -36,7 +43,14 @@ import { CompanyRoutingModule } from './company-routing.module';
     MatCardModule,
     CommonModule,
     CompanyRoutingModule,
-  ]
-  
+    SharedModule,
+    MatDialogTitle,
+    MatDialogContent, 
+    MatDialogActions, 
+    MatDialogClose, 
+    MatTabsModule,
+    MatStepperModule
+  ],
+
 })
 export class CompanyModule { }

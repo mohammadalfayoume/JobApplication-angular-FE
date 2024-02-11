@@ -27,11 +27,10 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    SharedModule,
     MatCardModule
   ],
   exports: [
-    LayoutComponent
+    LayoutComponent,
   ]
 })
 export class CoreModule { }

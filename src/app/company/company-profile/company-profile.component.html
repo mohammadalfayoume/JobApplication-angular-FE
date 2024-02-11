@@ -2,8 +2,9 @@
     <span class="sr-only">Loading...</span>
 </div>
 <ng-template #showDev>
+  
     <h1 class="header">Company Profile</h1>
-    <img class="profilePicture" [src]="imgSrc || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'" alt="Preview Image">
+    <img class="profilePicture" [src]="fileService.getImgUrl() || 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'" alt="Preview Image">
       <table class="table">
           <thead>
             <tr>
@@ -20,8 +21,15 @@
               <td>{{data.aboutUs || 'empty'}}</td>
               <td>{{data.countryName || 'empty'}}</td>
               <td>{{data.cityName || 'empty'}}</td>
-              <td><a href="/company/update-company"><i class="fas fa-edit"></i></a></td>
+              <td><a routerLink="/company/update-company"><i class="fas fa-edit"></i></a></td>
             </tr>
           </tbody>
         </table>
+        <h1 class="header">Company Jobs</h1>
+        <app-jobs [companyId]="data.id"></app-jobs>
+        <button mat-button (click)="openDialog()">Post a new job</button>
+
+        
+        
 </ng-template>
+

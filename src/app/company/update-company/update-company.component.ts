@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CompanyService } from '../company.service';
-import { GeneralService } from '../../shared/general.service';
+import { SharedService } from '../../shared/shared.service';
+import { CompanyDto } from '../../lib/interface/companyDto';
+import { FileService } from '../../shared/file.service';
+import { COUNTRY_ENUM } from '../../lib/constants';
 
 
 @Component({
@@ -14,10 +17,10 @@ export class UpdateCompanyProfileComponent implements OnInit {
   countries: any[] = [];
   cities: any[] = [];
   selectedCountry: any;
-  imgSrc: string = '';
+  imgSrc: string = 'http://placehold.it/150';
+  companyData : any;
   buttonDsiabled: boolean = false;
-  constructor(private router: Router, private companyService: CompanyService, private generalServices: GeneralService) { 
-    console.log("ffffffffffffff");
+  constructor(private companyService: CompanyService, private generalServices: SharedService, public fileService: FileService) { 
   }
 
   companyProfileForm = new FormGroup({
@@ -27,7 +30,7 @@ export class UpdateCompanyProfileComponent implements OnInit {
     cityId: new FormControl("", [Validators.required]),
     profilePictureFile: new FormControl(null, [Validators.required])
   });
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchCountries();
   }
   submitForm(){
@@ -76,7 +79,7 @@ removeImage(): void {
 }
   
   fetchCountries() {
-    this.generalServices.getLookupData(3).subscribe(
+    this.generalServices.getLookupData(COUNTRY_ENUM).subscribe(
       response => {
         this.countries = response.data;
       },

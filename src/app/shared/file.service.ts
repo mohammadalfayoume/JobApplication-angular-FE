@@ -10,7 +10,7 @@ export class FileService {
 
   constructor(private http: HttpClient) { }
   private apiUrl = environment.apiUrl;
-  getImageUrl(fileId: any): Observable<string> {
+  getImageUrl(fileId: any): Observable<boolean> {
     return this.http
       .get(`${this.apiUrl}/File/GetFileById?id=${fileId}`, {
         responseType: 'arraybuffer',
@@ -18,11 +18,16 @@ export class FileService {
       .pipe(
         map((response: ArrayBuffer) => {
           const contentType = 'image/*'; // Adjust with the actual content type returned by your API
-          return this.convertBytesToDataUrl(new Uint8Array(response), contentType);
+          const imgUrl = this.convertBytesToDataUrl(new Uint8Array(response), contentType);
+          localStorage.setItem('imgSrc', imgUrl);
+          return true;
         }),
       );
   }
-  
+  getImgUrl(): string | null {
+    const imgUrl = localStorage.getItem('imgSrc');
+    return imgUrl;
+  }
   private convertBytesToDataUrl(bytes: Uint8Array, contentType: string): string {
     const blob = new Blob([bytes], { type: contentType });
     return URL.createObjectURL(blob);

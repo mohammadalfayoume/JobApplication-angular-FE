@@ -4,8 +4,14 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 import { UpdateCompanyProfileComponent } from './update-company/update-company.component';
 
 const routes: Routes = [
-  {path: 'update-company', component: UpdateCompanyProfileComponent},
-  {path: '', component: CompanyProfileComponent}
+  {
+    path: '',
+    component: CompanyProfileComponent,
+  },
+  {
+    path: 'update-company',
+    component: UpdateCompanyProfileComponent,
+  },
 ];
 
 @NgModule({

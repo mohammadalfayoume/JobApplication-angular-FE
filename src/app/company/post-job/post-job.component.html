@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>Post a new job</h2>
+<mat-dialog-content>
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your Job Info</ng-template>
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="job title" formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Employee location Country</mat-label>
+                <mat-select formControlName="countryId" (selectionChange)="getCountryCities($event)">
+                  @for (country of countries; track country) {
+                    <mat-option [value]="country.id">{{country.name}}</mat-option>
+                  }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Employee location City</mat-label>
+                <mat-select formControlName="cityId">
+                  @for (city of cities; track city) {
+                    <mat-option [value]="city.id">{{city.name}}</mat-option>
+                  }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Years Of Experience</mat-label>
+              <input matInput placeholder="YOE" formControlName="yearsOfExperience" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Workplace type</mat-label>
+                <mat-select [(ngModel)]="selectedJobType" formControlName="jobTypeLookupId">
+                  @for (workplaceType of workplaceTypes; track workplaceType) {
+                    <mat-option [value]="workplaceType.id">{{workplaceType.name}}</mat-option>
+                  }
+                </mat-select>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Fill out your Job Detailes">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Job Description</mat-label>
+              <input matInput formControlName="description" placeholder="description"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button (click)="submitJobForm()" mat-button>Submit</button>
+            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+          </div>
+        </mat-step>
+      </mat-stepper>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions> -->

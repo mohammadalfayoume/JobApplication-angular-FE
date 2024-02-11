@@ -26,17 +26,7 @@ export class RegisterComponent {
   submitForm() {
     if (this.registerForm.valid) {
       const userData = this.registerForm.value;
-      this.auth.registerUser(userData).subscribe(
-        response => {
-          // Handle successful registration
-          console.log('Registration successful:', response);
-          this.router.navigate(['/profile']);
-        },
-        error => {
-          // Handle registration error
-          console.error('Registration failed:', error);
-        }
-      );
+      this.auth.registerUser(userData).subscribe();
     }
   }
 }

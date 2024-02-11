@@ -1,4 +1,7 @@
 <div class="page-container">
+  <div>
+    <a routerLink="/company"><i class="fa-solid fa-arrow-left back-arrow"></i></a>
+  </div>
     <h1>Update Company Profile</h1>
     <form [formGroup]="companyProfileForm" (ngSubmit)="$event.preventDefault(); submitForm()">
       <mat-form-field>
@@ -34,7 +37,7 @@
           
         </div>
         <div class="img-div">
-          <img [src]="imgSrc || 'http://placehold.it/150'" alt="image">
+          <img [src]="imgSrc" alt="image" id="img-tag">
         </div>
         <button type="button" style="display: flex;align-self: flex-start;" class="btn-close" aria-label="Close" (click)="removeImage()"></button>
       </div>
