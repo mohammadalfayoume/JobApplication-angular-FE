@@ -35,3 +35,21 @@
     /* font-size: .875rem; */
     color: #00000099;
 }
+.edit-delete-icons {
+    /* margin-top: 1rem; */
+    /* width: 100%; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-delete-icons > mat-icon:first-child {
+    color: rgb(0, 145, 255);
+    cursor: pointer;
+}
+
+.edit-delete-icons > mat-icon:last-child {
+    color: rgb(205, 56, 56);
+    cursor: pointer;
+}

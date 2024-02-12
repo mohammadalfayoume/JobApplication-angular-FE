@@ -19,6 +19,7 @@ import { PostJobComponent } from './post-job/post-job.component';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatStepperModule} from '@angular/material/stepper';
+import { AddSkillsComponent } from '../shared/components/add-skills/add-skills.component';
 
 
 
@@ -26,7 +27,8 @@ import {MatStepperModule} from '@angular/material/stepper';
   declarations: [
     UpdateCompanyProfileComponent,
     CompanyProfileComponent,
-    PostJobComponent
+    PostJobComponent,
+    // AddSkillsComponent
   ],
 
   imports: [

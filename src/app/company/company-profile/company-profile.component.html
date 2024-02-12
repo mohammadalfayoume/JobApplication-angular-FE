@@ -26,8 +26,10 @@
           </tbody>
         </table>
         <h1 class="header">Company Jobs</h1>
-        <app-jobs [companyId]="data.id"></app-jobs>
-        <button mat-button (click)="openDialog()">Post a new job</button>
+        <div class="creat-job-btn-container">
+          <button class="creat-job-btn" mat-button (click)="openDialog()"><mat-icon style="color: rgb(38, 135, 184);">create</mat-icon> Post a new job</button>
+        </div>
+        <app-jobs [companyId]="data.id" [companyName]="data.companyName"></app-jobs>
 
         
         

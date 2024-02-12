@@ -34,4 +34,17 @@ export class SharedService {
       })
     );
   }
+
+  getSkills() : Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/lookup/getSkills`).pipe(
+      map(response => {
+        return response.data;
+      })
+    );
+  }
+
+  getUserScrImg(): string | null{
+    const imgSrc = localStorage.getItem('imgSrc');
+    return imgSrc;
+  }
 }

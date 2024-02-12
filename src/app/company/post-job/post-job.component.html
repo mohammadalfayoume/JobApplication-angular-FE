@@ -26,7 +26,7 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Years Of Experience</mat-label>
-              <input matInput placeholder="YOE" formControlName="yearsOfExperience" required>
+              <input matInput type="number" min="0" max="30" placeholder="YOE" formControlName="yearsOfExperience" required>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Workplace type</mat-label>
@@ -43,11 +43,19 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup" label="Fill out your Job Detailes">
           <form [formGroup]="secondFormGroup">
-            <mat-form-field>
+            <mat-form-field style="width: 100%;">
               <mat-label>Job Description</mat-label>
-              <input matInput formControlName="description" placeholder="description"
-                     required>
+              <textarea matInput
+                        formControlName="description"
+                        placeholder="description"
+                        required
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5"></textarea>
+              
             </mat-form-field>
+            <app-add-skills (onSkillsAdded)="updateSelectedSkills($event)"></app-add-skills>
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>

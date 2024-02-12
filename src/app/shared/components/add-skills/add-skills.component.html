@@ -1,0 +1,24 @@
+<form>
+    <mat-form-field class="example-chip-list">
+      <mat-label>Favorite Skills</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Skill selection">
+        @for (skill of skills; track skill) {
+          <mat-chip-row (removed)="remove(skill)">
+            {{skill.name}}
+            <button matChipRemove [attr.aria-label]="'remove ' + skill">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input id="inputSkill" placeholder="New Skill..." [formControl]="skillCtrl"
+        [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"/>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        @for (skill of filteredSkills | async; track skill) {
+          <mat-option [value]="skill">{{skill}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>

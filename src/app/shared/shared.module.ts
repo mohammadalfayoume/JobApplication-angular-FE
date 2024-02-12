@@ -1,21 +1,35 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { JobsComponent } from './components/jobs/jobs.component';
-import { PostJobComponent } from '../company/post-job/post-job.component';
 import { MatButtonModule } from '@angular/material/button';
+import { AddSkillsComponent } from './components/add-skills/add-skills.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule} from '@angular/material/chips';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    JobsComponent
+    JobsComponent,
+    AddSkillsComponent
     
   ],
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    MatIconModule,
   ],
   exports: [
-    JobsComponent
+    JobsComponent,
+    AddSkillsComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -25,4 +25,7 @@ export class CompanyService {
     return this.http.get<any>(`${this.apiUrl}/company/getCompany`)
   }
 
+  createOrUpdateJob(job: any) {
+    return this.http.post(`${this.apiUrl}/job/createUpdateJob`, job)
+  }
 }                               

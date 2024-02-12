@@ -25,4 +25,9 @@
   height: 50px;
   margin: 5rem auto;
 }
-  
+
+.creat-job-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
